@@ -1,3 +1,3 @@
 grandmaster
 ===========
-Documentation is located [here](wiki/Documentation)
+Documentation is located [here](https://github.com/sandialabs/grandmaster/wiki/Documentation)
