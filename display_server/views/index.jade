@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  #posts
+    - each post in posts
+      div.post
+        div.created_at= post.source
+        div.title= post.name
+        div.body= post.content

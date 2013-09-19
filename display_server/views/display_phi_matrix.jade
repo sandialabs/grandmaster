@@ -1,0 +1,9 @@
+extends d3layout
+
+block content
+  h1= title
+  table(border="1px")
+    - each row in phi
+      tr
+        - each entry in row
+          td= entry

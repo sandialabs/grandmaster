@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  #users
+    - each user in users
+      div.user
+        div.title= user.name
+        p= user.cluster_assignment
+        table(border="1px")
+          tr
+          - each cluster in user.post_clusters
+            td= cluster

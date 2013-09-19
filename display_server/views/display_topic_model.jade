@@ -1,0 +1,24 @@
+extends d3layout
+
+block content
+  h1= title
+  table(border="1px")
+  script(type='text/javascript')
+    d3.json ('/topic_model', 
+      function (model) {
+        var header = d3.select("table").append("tr").selectAll ("td")
+          .data (model.topics)
+          .enter ().append ("td")
+            .text (function (d, i) { return ":" + i + ":"; });
+
+        var td = d3.select("table").append("tr").selectAll("td")
+          .data (model.topics)
+          .enter().append ("td")
+            .attr ("valign", "top");
+
+        var div = td.selectAll("div")
+                  .data (function (d) { return d; })
+                  .enter().append ("div")
+                  .text (function (d) { return d[1];})
+                  .style ("font-size", function (d) { return 5 + d[0] * 350 + "px"; });
+      });

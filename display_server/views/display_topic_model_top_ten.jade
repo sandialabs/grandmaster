@@ -1,0 +1,55 @@
+extends d3layout
+
+block content
+  h1= title
+  table
+  script(type='text/javascript')
+    d3.json ('/topic_model', 
+      function (model) {
+        d3.select("table").selectAll("tr")
+          .data (model.phi)
+          .enter().append ("tr").text(function(d) { 
+            var argmax = function (arr) {
+              var maxval = arr[0]
+              var maxind = 0;
+              for (var i = 1; i < arr.length; i ++) {
+                if (arr[i] > maxval) {
+                  maxval = d[i];
+                  maxind = i;
+                }
+              }
+              return maxind;
+            }
+            var maxind = argmax(d);
+            var retval = "" + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            maxind = argmax(d);
+            retval += "," + model.terms[maxind];
+            d[maxind] = 0;
+            return retval;
+          });
+      });

@@ -1,0 +1,65 @@
+extends d3layout
+
+
+block content
+  // preset form values if we receive a userdata object //
+  - userdata = typeof(udata) != 'undefined' ? udata : { }
+
+  div.navbar.navbar-fixed-top
+    div.navbar-inner
+      a(data-toggle="collapse",data-target=".nav-collapse").btn.btn-navbar
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.brand= title
+      div.nav_collapse
+        ul.nav.pull-right
+          li.dropdown
+            a(class="dropdown-toggle",href="#",data-toggle="dropdown")= userdata.user
+              strong.caret
+            div(style="padding: 15px; padding-bottom: 0px;").dropdown-menu
+              include account
+          li.divider-vertical
+          li
+            a(href="#")#btn-logout Sign Out
+    div.row
+      div#name-search.span3.input-append.search
+        input(type="text",name="search-name",placeholder="search users").input-medium
+        button.btn
+          i.icon-search
+    div.row
+      div.span3
+        p.lead.text-center= "User"
+      div.span3
+        p.lead.text-center= "Nearest User"
+      div.span3
+        p.lead.text-center= "Most Central User"
+      div.span3
+        p.lead.text-center= "Cluster Links"
+    div.row
+      div#my_content.span3
+      div#nearest_content.span3
+      div#central_content.span3
+      div#link_content.span3
+
+  include modals/alert
+  include modals/confirm
+
+  script(src="javascripts/display_user.js")
+
+  script
+    $(function () {
+      $('.dropdown-toggle').dropdown();
+      $('.dropdown input, .dropdown label').click(function(e) { e.stopPropagation(); });
+    });
+    $('#name-search input:first-of-type').attr ("value", "#{userdata.name}");
+    $('#name-search').search ('action');
+    // fill_user_info ("#{userdata.name}");
+
+  script(src='/vendor/jquery.form.js')
+  script(src='/vendor/bootstrap-modal.js')
+  script(src='/vendor/bootstrap-transition.js')
+  script(src='/javascripts/views/home.js')
+  script(src='/javascripts/controllers/homeController.js')
+  script(src='/javascripts/form-validators/accountValidator.js')
+

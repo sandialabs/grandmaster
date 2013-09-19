@@ -1,0 +1,47 @@
+extends d3layout
+
+block content
+  div.navbar.navbar-fixed-top
+    div.navbar-inner
+      a(data-toggle="collapse",data-target=".nav-collapse").btn.btn-navbar
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.brand= title
+      div.nav_collapse
+        ul.nav.pull-right
+          li
+            a(href="/signup")#create-account Sign Up
+          li.divider-vertical
+          li.dropdown
+            a(class="dropdown-toggle",href="#",data-toggle="dropdown")= "Sign In"
+              strong.caret
+            div(style="padding: 15px; padding-bottom: 0px;").dropdown-menu
+              form(method="post",accept-charset="UTF-8")#login-form.well
+                input(id="user_username",style="margin-bottom: 15px;",type="text",name="user",placeholder="username",size="30").required
+                input(id="user_password",style="margin-bottom: 15px;",type="password",name="pass",placeholder="password",size="30").required
+                input(id="user_remember_me",style="float: left; margin-right: 10px;",type="checkbox",name="remember-me",checked='unchecked')#remember-me
+                label(for="user_remember_me").string.optional= "Remember me"
+
+                input(style="clear: left; width: 100%; height: 32px; font-size: 13px;",type="submit",name="commit",value="Sign In")$btn-login.btn.btn-primary
+                a(href="#")#forgot-password Forgot your password?
+
+  include modals/alert
+  include modals/lost-password
+
+  script
+    $(function () {
+      $('.dropdown-toggle').dropdown()
+      $('.dropdown input, .dropdown label').click(function(e) { e.stopPropagation(); });
+    });
+
+  script(src="javascripts/display_front.js")
+
+  script(src='/vendor/jquery.form.js')
+  script(src='/vendor/bootstrap-modal.js')
+  script(src='/vendor/bootstrap-transition.js')
+  script(src='/javascripts/views/login.js')
+  script(src='/javascripts/controllers/loginController.js')
+  script(src='/javascripts/form-validators/loginValidator.js')
+  script(src='/javascripts/form-validators/emailValidator.js')
+
