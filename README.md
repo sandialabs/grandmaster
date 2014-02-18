@@ -6,3 +6,5 @@ work by or on behalf of the U.S. Government. Export of this program may require
 a license from the United States Government.
 
 Documentation is located [here](https://github.com/sandialabs/grandmaster/wiki/Documentation)
+
+Information about Titan 2.0 is located [here](https://github.com/sandialabs/grandmaster/wiki/Titan-2.0)
