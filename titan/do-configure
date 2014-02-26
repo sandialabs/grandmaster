@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cmake \
+  -D Module_Library_titanClustering:BOOL=ON \
+  -D Module_Library_titanDataAnalysis:BOOL=ON \
+  -D Module_Library_titanMPIDataAnalysis:BOOL=ON \
+  -D Module_Library_titanTextAnalysis:BOOL=ON \
+  -D Module_Library_titanMPITextAnalysis:BOOL=ON \
+  -D Module_Library_titanMachineLearning:BOOL=ON \
+  -D Module_Library_titanWeb:BOOL=ON \
+  -D Titan_IGNORE_HOOKS:BOOL=ON \
+  -D Titan_WRAP_PYTHON:BOOL=ON \
+  ../titan-2.0
